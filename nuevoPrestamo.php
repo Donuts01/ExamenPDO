@@ -15,7 +15,14 @@ $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
     <h4>Registro de prestamos</h4>
     <form action="nuevoPrestamo.php" method="POST" autocomplete="off">
         <div class="row">
-
+            <?php if ($correcto) { ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Exito al guardar
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php } else { ?>
+                <h3> </h3>
+            <?php } ?>
             <div class="col-md-6">
                 <div class="form-group p-3">
                     <label>Cliente</label>
