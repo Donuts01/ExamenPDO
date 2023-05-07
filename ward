@@ -1,0 +1,44 @@
+$IdCliente = $_POST['IdCliente'];
+$NombreCliente = $_POST['NombreCliente'];
+$ApePatCliente = $_POST['ApePatCliente'];
+$ApeMatCliente = $_POST['ApeMatCliente'];
+
+
+$query = $con->prepare("UPDATE productos SET codigo=?, descripcion=?, inventariable=?, stock=? WHERE id=?");
+$resultado = $query->execute(array($codigo, $descripcion, $inventariable, $stock, $id));
+
+if ($resultado) {
+$correcto = true;
+}
+
+
+
+<?php
+if ((isset($_POST['BuscarClientess']) != '')) {
+    echo 'hola2';
+    foreach ($resultado as $row) {
+        ?>
+        <tr>
+            <td>
+                <?php echo $row['IdPrestamo']; ?>
+            </td>
+            <td>
+                <?php echo $row['NombreCliente']; ?>
+            </td>
+            <td>
+                <?php echo $row['Monto']; ?>
+            </td>
+            <td>
+                <?php echo $row['Plazos']; ?>
+            </td>
+            <td><a href="Amortizaciones.php?id=<?php echo $row['IdPrestamo']; ?>" class="btn btn-warning">
+                    <img src='3b.png' alt="Opciones" />
+                </a></td>
+        </tr>
+    <?php
+    }
+} else {
+    echo 'hola1';
+
+}
+?>
